@@ -6,9 +6,21 @@ from telethon.sessions import StringSession
 
 load_dotenv()
 
-API_ID = int(os.getenv("API_ID"))
+api_id_str = os.getenv("API_ID")
+if not api_id_str:
+    raise ValueError("API_ID environment variable is missing or empty!")
+
+try:
+    API_ID = int(api_id_str)
+except ValueError:
+    raise ValueError("API_ID must be a valid integer!")
+
 API_HASH = os.getenv("API_HASH")
 STRING_SESSION = os.getenv("STRING_SESSION")
+
+if not API_HASH or not STRING_SESSION:
+    raise ValueError("API_HASH or STRING_SESSION is missing!")
+
 
 client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 
