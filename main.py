@@ -47,7 +47,7 @@ async def main():
 @client.on(events.NewMessage(chats=list(channels.keys())))
 async def handler(event):
     try:
-        await asyncio.sleep(1)
+        # await asyncio.sleep(1)
 
         if event.is_channel:
             channel_id = event.chat_id
@@ -60,7 +60,7 @@ async def handler(event):
             start_time = asyncio.get_event_loop().time()
             found = False
 
-            while asyncio.get_event_loop().time() - start_time < 3:
+            while asyncio.get_event_loop().time() - start_time < 5:
                 async for msg in client.iter_messages(linked_chat_id, limit=10):
                     if msg.forward and msg.forward.original_fwd:
                         if msg.forward.original_fwd.channel_post == event.id:
