@@ -24,7 +24,8 @@ channels = {
     -1001980053407: -1002030769789,
     -1001773705589: -1001981481442,
     -1002339069316: -1002212791539,
-    -1002331884910: -1002273035080
+    -1002331884910: -1002273035080,
+    -1001449117896: -1002409602563
 }
 
 
@@ -70,10 +71,13 @@ async def handler(event):
 
                             import random
                             comments = [
-                                "Ramazon muborak, do'stlar! 🌙",
+                                "Assalomu alaykum! 🍃 \nRamazon muborak bo‘lsin! Alloh ibodatlaringizni qabul qilsin! 🤲",
                                 "Alloh ibodatlaringizni qabul qilsin! 🤲",
-                                "Bugun ham duolarimizda bir-birimizni eslaylik! 💖",
+                                "Bugun ham duolarimizda bir-birimizni eslaylik! 💖\nZero, duo mo‘minning eng kuchli quroli!",
                                 "Zikr va salovat aytish esdan chiqmasin! 🕌",
+                                "Iftar va saharlik Allohning ne’matlaridir, shukrni unutmaylik!",
+                                "Allohning rahmati va barakoti siz bilan bo‘lsin! 🌟",
+                                "Bu oyda nafaqat ochlikka, balki yomon so‘z va illatlarga ham sabr qilaylik!\nRamazonni haqiqiy ma’noda his qilaylik!"
                             ]
                             comment = random.choice(comments)
                             await client.send_message(linked_chat_id, comment, reply_to=msg.id)
