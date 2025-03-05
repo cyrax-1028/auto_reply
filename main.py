@@ -54,7 +54,10 @@ async def handler(event):
             channel_id = event.chat_id
             linked_chat_id = channels.get(channel_id)
 
-            message = f"✅ Yangi post topildi! Kanal ID: {channel_id}, Post ID: {event.id}"
+            entity = await client.get_entity(channel_id)
+            channel_name = entity.title
+
+            message = f"✅ Yangi post topildi! Kanal: {channel_name} (ID: {channel_id}), Post ID: {event.id}"
             print(message)
             send_to_bot(message)
 
