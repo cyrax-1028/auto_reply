@@ -71,12 +71,10 @@ async def handler(event):
 
                             import random
                             comments = [
-                                "Assalomu alaykum! 🍃 \nRamazon muborak bo‘lsin! Alloh ibodatlaringizni qabul qilsin! 🤲",
-                                "Alloh ibodatlaringizni qabul qilsin! 🤲",
-                                "Bugun ham duolarimizda bir-birimizni eslaylik! 💖\nZero, duo mo‘minning eng kuchli quroli!",
+                                "Ronaldo 👍\Messi 🔥",
+                                "Salom",
                                 "Zikr va salovat aytish esdan chiqmasin! 🕌",
-                                "Iftar va saharlik Allohning ne’matlaridir, shukrni unutmaylik!",
-                                "Allohning rahmati va barakoti siz bilan bo‘lsin! 🌟",
+                                "Bekorchilik 😎"
                                 "Bu oyda nafaqat ochlikka, balki yomon so‘z va illatlarga ham sabr qilaylik!\nRamazonni haqiqiy ma’noda his qilaylik!"
                             ]
                             comment = random.choice(comments)
