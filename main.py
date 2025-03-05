@@ -20,7 +20,6 @@ client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 
 channels = {
     -1001337701474: -1001956847541,
-    -1002460046152: -1001694845676,
     -1001980053407: -1002030769789,
     -1001773705589: -1001981481442,
     -1002339069316: -1002212791539,
@@ -77,9 +76,7 @@ async def handler(event):
                                 "Ronaldo 👍\nMessi 🔥\nAntony ❤️",
                                 "Kuzatib boryapman yaxshi kanal ekan 👍",
                                 "Nechinchi bo'ldim",
-                                "Men keldim",
-                                "Bugun kola ichdim",
-                                "Bekorchilik 😎"
+"Futboldan zavqlanish kerak asabiylashish kerak emas"
                             ]
                             comment = random.choice(comments)
                             await client.send_message(linked_chat_id, comment, reply_to=msg.id)
