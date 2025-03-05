@@ -13,6 +13,9 @@ STRING_SESSION = os.getenv("STRING_SESSION")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = 5061909214
 
+print("API_ID:", API_ID)
+print("API_HASH:", API_HASH)
+
 client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 
 channels = {
