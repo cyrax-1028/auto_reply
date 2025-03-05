@@ -74,7 +74,10 @@ async def handler(event):
 
                             import random
                             comments = [
-                                "Ronaldo 👍\Messi 🔥",
+                                "Ronaldo 👍\nMessi 🔥\nAntony ❤️",
+                                "Kuzatib boryapman yaxshi kanal ekan 👍",
+                                "Nechinchi bo'ldim",
+                                "Men keldim",
                                 "Salom",
                                 "Bekorchilik 😎"
                             ]
