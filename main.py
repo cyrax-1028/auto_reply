@@ -73,9 +73,7 @@ async def handler(event):
                             comments = [
                                 "Ronaldo 👍\Messi 🔥",
                                 "Salom",
-                                "Zikr va salovat aytish esdan chiqmasin! 🕌",
                                 "Bekorchilik 😎"
-                                "Bu oyda nafaqat ochlikka, balki yomon so‘z va illatlarga ham sabr qilaylik!\nRamazonni haqiqiy ma’noda his qilaylik!"
                             ]
                             comment = random.choice(comments)
                             await client.send_message(linked_chat_id, comment, reply_to=msg.id)
