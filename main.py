@@ -78,7 +78,7 @@ async def handler(event):
                             comment = random.choice(comments)
                             await client.send_message(linked_chat_id, comment, reply_to=msg.id)
 
-                            message = "💬 Fikr bildirish bo‘limiga sharh yuborildi!"
+                            message = f"💬 Fikr bildirish bo‘limiga sharh yuborildi!: {comment}"
                             print(message)
                             send_to_bot(message)
 
