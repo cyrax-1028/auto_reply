@@ -78,7 +78,7 @@ async def handler(event):
                                 "Kuzatib boryapman yaxshi kanal ekan 👍",
                                 "Nechinchi bo'ldim",
                                 "Men keldim",
-                                "Salom",
+                                "Bugun kola ichdim",
                                 "Bekorchilik 😎"
                             ]
                             comment = random.choice(comments)
