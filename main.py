@@ -1,10 +1,10 @@
 import os
-import json
 import asyncio
 import requests
 from dotenv import load_dotenv
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
+import json
 
 load_dotenv()
 
@@ -19,13 +19,8 @@ print("API_HASH:", API_HASH)
 
 client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 
-def load_json(filename):
-    with open(filename, "r", encoding="utf-8") as file:
-        return json.load(file)
-
-comments = load_json("comments.json")
 channels = load_json("channels.json")
-
+print(channels)
 
 def send_to_bot(message):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
@@ -42,15 +37,14 @@ async def main():
     send_to_bot("✅ Userbot Railway'da ishga tushdi!")
 
 
-@client.on(events.NewMessage(chats=[int(k) for k in channels.keys()]))
+@client.on(events.NewMessage(chats=list(channels.keys())))
 async def handler(event):
     try:
-        if event.is_channel:
-            channel_id = str(event.chat_id)
-            linked_chat_id = int(channels.get(channel_id, 0))
+        # await asyncio.sleep(1)
 
-            if linked_chat_id == 0:
-                return  # Agar mos keluvchi guruh bo'lmasa, chiqib ketamiz
+        if event.is_channel:
+            channel_id = event.chat_id
+            linked_chat_id = channels.get(channel_id)
 
             entity = await client.get_entity(channel_id)
             channel_name = entity.title
@@ -71,6 +65,9 @@ async def handler(event):
                             send_to_bot(message)
 
                             import random
+                            comments = load_json("comments.json")
+                            print(comments)
+
                             comment = random.choice(comments)
                             await client.send_message(linked_chat_id, comment, reply_to=msg.id)
 
