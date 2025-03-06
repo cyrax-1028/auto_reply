@@ -19,6 +19,10 @@ print("API_HASH:", API_HASH)
 
 client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 
+def load_json(filename):
+    with open(filename, "r", encoding="utf-8") as file:
+        return json.load(file)
+
 channels = load_json("channels.json")
 print(channels)
 
