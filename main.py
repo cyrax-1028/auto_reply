@@ -18,12 +18,18 @@ print("API_HASH:", API_HASH)
 
 client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 
-channels = {
+channels = {
+    -1001337701474: -1001956847541,
+    -1002460046152: -1001694845676,
+    -1001980053407: -1002030769789,
+    -1001773705589: -1001981481442,
+    -1002339069316: -1002212791539,
+    -1002331884910: -1002273035080,
+    -1001449117896: -1002409602563
 }
 
 
 def send_to_bot(message):
-    """Bot orqali loglarni yuborish"""
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     data = {"chat_id": CHAT_ID, "text": message}
     try:
@@ -67,10 +73,23 @@ async def handler(event):
 
                             import random
                             comments = [
-                                 "Kuzatib boryapman yaxshi kanal ekan 👍",
-                                "Nechinchi bo'ldim",
-"Futboldan zavqlanish kerak asabiylashish kerak emas"
+                                "Pele — braziliyalik futbolchi. 3 karra jahon chempioni. 1956-1974-yillarda „Santos“ klubida, 1957-1970-yillarda Braziliya terma jamoasi tarkibida oʻynagan. „Santos“ futbolchilari bilan birga Janubiy Amerika chempionlari kubogi va qitʼalararo kubok egasi. 1957—1977-yillarda 1300 ga yaqin toʻp kiritgan",
+                                "Cristiano Ronaldo — portugaliyalik professional futbolchi, Saudiya Arabistonining Al-Nassr klubi va Portugaliya terma jamoasi hujumchisi. U 1985-yil 5-fevralda Funchal, Madeira shahrida tug‘ilgan va futbol tarixidagi eng buyuk o‘yinchilardan biri hisoblanadi. Ronaldo professional faoliyatini Sporting CP klubida boshlagan va 2003-yilda Manchester United ga o‘tgan. U yerda o‘zining ilk Oltin to‘p mukofotini qo‘lga kiritgan. Keyinchalik Real Madrid safida 9 yil davomida o‘ynab, jamoaning eng yaxshi to‘purari bo‘lishga muvaffaq bo‘lgan. Shundan so‘ng u Juventus va yana Manchester United klublarida to‘p surdi. Hozirda Al-Nassr klubida faoliyatini davom ettirmoqda.",
+                                "Ronaldo 👍\nMessi 🔥\nAntony ❤️",
+                                "Lionel Messi argentinalik professional futbolchi, Inter Miami klubi va Argentina terma jamoasi hujumchisi. U 1987 yil 24 iyunda tug‘ilgan. Faoliyatining katta qismini Barcelona klubida o‘tkazib, 8 marta Oltin to‘p sohibi bo‘lgan va bir necha bor Chempionlar Ligasi hamda La Liga g‘olibi bo‘lgan. 2021 yilda PSGga, 2023 yilda esa Inter Miami klubiga o‘tdi. 2022 yilda Argentina terma jamoasi bilan Jahon chempionatida g‘olib chiqdi.",
+                                "Kuzatib boryapman yaxshi kanal ekan 👍",
+                                "Neymar braziliyalik professional futbolchi, Al Hilal klubi va Braziliya terma jamoasi hujumchisi. U 1992 yil 5 fevralda tug‘ilgan. Faoliyatini Santos klubida boshlagan, 2013 yilda Barcelona safiga qo‘shilib, Chempionlar Ligasi g‘olibi bo‘lgan. 2017 yilda rekord summa evaziga PSGga o‘tgan va bir necha bor Liga 1 chempioni bo‘lgan. 2023 yilda Al Hilalga transfer qilindi. Braziliya terma jamoasi bilan Konfederatsiyalar kubogi va Olimpiada oltin medalini qo‘lga kiritgan.",
+                                "Diego Maradona argentinalik afsonaviy futbolchi va murabbiy. U 1960 yil 30 oktyabrda tug‘ilgan va 2020 yil 25 noyabrda vafot etgan. Maradona 1986 yilgi Jahon chempionatida Argentina terma jamoasini g‘alabaga olib chiqqan va Xudo qo‘li hamda tarixiy solo goli bilan mashhur bo‘lgan. Klub darajasida Boca Juniors, Barcelona va Napoli klublarida o‘ynagan, ayniqsa, Napoli safida ikki marta Italiya chempioni bo‘lgan. U futbol tarixidagi eng buyuk o‘yinchilardan biri hisoblanadi.",
+                                "Johan Kroyf gollandiyalik afsonaviy futbolchi va murabbiy. U 1947 yil 25 aprelda tug‘ilgan va 2016 yil 24 martda vafot etgan. Kroyf total futbol uslubining asoschilaridan biri bo‘lib, Ayaks va Barselona klublarida o‘ynagan. U uch marta Oltin to‘p sohibi bo‘lgan va Ayaks bilan uch marta Chempionlar Ligasi g‘olibi bo‘lgan. Murabbiy sifatida Barselonani boshqarib, klubga Kroyf falsafasini olib kirgan va tiki taka uslubining rivojlanishiga asos solgan. U futbol tarixidagi eng buyuk o‘yinchilardan biri sifatida tan olingan.",
+                                "Kilian Mbappe fransiyalik professional futbolchi, Paris Sen Jermen klubi va Fransiya terma jamoasi hujumchisi. U 1998 yil 20 dekabrda tug‘ilgan. Futbolchilik faoliyatini Monako klubida boshlagan va 2017 yilda PSGga o‘tgan. U bir necha bor Liga 1 chempioni bo‘lgan va Yevropaning eng yaxshi futbolchilaridan biri hisoblanadi. 2018 yilgi Jahon chempionatida Fransiya terma jamoasi bilan g‘olib bo‘lgan va turnirning eng yaxshi yosh futbolchisi deb topilgan. 2022 yilgi Jahon chempionatida eng ko‘p gol urgan futbolchi bo‘lib, finalda xet-trik qayd etgan.",
+                                "Erling Haaland norvegiyalik professional futbolchi, Manchester Siti klubi va Norvegiya terma jamoasi hujumchisi. U 2000 yil 21 iyulda tug‘ilgan. Salzburg va Dortmund klublarida porlab, 2022 yilda Manchester Sitiga o‘tgan. Premyer ligada rekord darajada ko‘p gol urgan va Yevropaning eng kuchli hujumchilaridan biri hisoblanadi.",
+                                "Futbol dunyodagi eng mashhur sport turlaridan biri bo‘lib, unda ikkita jamoa to‘pni raqib darvozasiga kiritish orqali g‘alabaga erishishga harakat qiladi. Har bir jamoada 11 nafar o‘yinchi maydonga tushadi. O‘yin 90 daqiqa davom etadi va ikkita bo‘limga bo‘linadi. Futbol qoidalarini FIFA boshqaradi, eng nufuzli turniri esa har to‘rt yilda o‘tkaziladigan Jahon chempionatidir.",
+                                "Oltin to‘p futbol dunyosidagi eng nufuzli individual mukofotlardan biri bo‘lib, har yili dunyoning eng yaxshi futbolchisiga topshiriladi. Mukofot 1956 yilda France Football jurnali tomonidan ta’sis etilgan. Dastlab faqat Yevropa futbolchilari uchun mo‘ljallangan bo‘lsa, keyinchalik butun dunyo o‘yinchilari uchun berila boshlandi. Lionel Messi ushbu mukofotni eng ko‘p, 8 marta qo‘lga kiritgan futbolchi hisoblanadi.",
+                                "Oltin butsа futbol dunyosidagi eng nufuzli individual mukofotlardan biri bo‘lib, har yili Yevropa chempionatlarida eng ko‘p gol urgan futbolchiga beriladi. Mukofot 1968 yilda ta’sis etilgan va France Football jurnali tomonidan topshiriladi. Gollar liganing kuchliligiga qarab maxsus koeffitsiyent asosida hisoblanadi. Lionel Messi ushbu mukofotni eng ko‘p, 6 marta qo‘lga kiritgan futbolchi hisoblanadi.",
+                                "Oltin qo‘lqop mukofoti futbol darvozabonlari uchun beriladigan nufuzli sovrin bo‘lib, turli turnirlarda eng yaxshi darvozabonga topshiriladi. Jahon chempionatida ushbu mukofot 1994 yildan beri FIFA tomonidan taqdim etiladi. Klub darajasida esa UEFA Chempionlar Ligasi va Angliya Premyer Ligasi kabi musobaqalarda ham eng yaxshi darvozabonga Oltin qo‘lqop mukofoti beriladi.",
+                                "Jahon chempionati futbol bo‘yicha eng nufuzli turnir bo‘lib, har to‘rt yilda FIFA tomonidan tashkil etiladi. Dastlabki musobaqa 1930 yilda Urugvayda o‘tkazilgan. Turnirda dunyoning eng kuchli terma jamoalari ishtirok etadi. Braziliya eng ko‘p, 5 marta chempion bo‘lgan. So‘nggi Jahon chempionati 2022 yilda Qatarda bo‘lib o‘tgan va Argentina g‘oliblikni qo‘lga kiritgan."
                             ]
+
                             comment = random.choice(comments)
                             await client.send_message(linked_chat_id, comment, reply_to=msg.id)
 
