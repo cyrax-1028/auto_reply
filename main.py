@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 import json
+import random
 
 load_dotenv()
 
@@ -14,19 +15,62 @@ STRING_SESSION = os.getenv("STRING_SESSION")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
-print("API_ID:", API_ID)
-print("API_HASH:", API_HASH)
-
 client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 
 channels = {
-    -1001337701474: -1001956847541,
-    -1002460046152: -1001694845676,
-    -1001980053407: -1002030769789,
-    -1001773705589: -1001981481442,
-    -1002339069316: -1002212791539,
-    -1002331884910: -1002273035080,
-    -1001449117896: -1002409602563
+    -1001337701474: -1001956847541,  # Inline
+    -1002460046152: -1001694845676,  # Futbolishee
+    -1001980053407: -1002030769789,  # vamos
+    -1001773705589: -1001981481442,  # Bilimdon
+    -1002339069316: -1002212791539,  # cyrax
+    -1002331884910: -1002273035080,  # Efuzpage
+    -1001449117896: -1002409602563  # Stock
+}
+
+channel_comments = {
+    -1001337701474: [  # Inline
+        "Bu juda foydali post ekan! 👍",
+        "Inline nomr 1",
+        "...",
+        "Kanal a'lo darajada! 🔥"
+    ],
+    -1002460046152: [  # Futbolishee
+        "Bekorchisheee",
+        "Futbolishee",
+        "..."
+    ],
+    -1001980053407: [  # vamos
+        "Vamos 🔥",
+        "Juda zo'r kanal",
+        "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
+        "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
+        "..."
+    ],
+    -1001773705589: [  # bilimdon
+        "🔥",
+        "Juda zo'r kanal",
+        "Profilfagi kanalga o'tib olilar desam boloradimi",
+        "..."
+    ],
+    -1001773705589: [  # efuzpage
+        "Efuzpage nomr 1 🔥",
+        "Eng zo'r kanal",
+        "Soibjanov sila",
+        "..."
+    ],
+    -1001449117896: [  # Stock
+        "Shunchalik foydali postlar bor ekanki, doimo kuzatib boraman! 👌",
+        "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
+        "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
+        "Stock Football nomr 1"
+    ],
+    -1002339069316: [  # Stock
+        "Shunchalik foydali postlar bor ekanki, doimo kuzatib boraman! 👌",
+        "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
+        "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
+        "Stock Football nomr 1"
+    ],
+
 }
 
 
@@ -48,8 +92,6 @@ async def main():
 @client.on(events.NewMessage(chats=list(channels.keys())))
 async def handler(event):
     try:
-        # await asyncio.sleep(1)
-
         if event.is_channel:
             channel_id = event.chat_id
             linked_chat_id = channels.get(channel_id)
@@ -72,20 +114,12 @@ async def handler(event):
                             print(message)
                             send_to_bot(message)
 
-                            import random
-                            comments = [
-                                "Juda foydali kanal ekan! 👍",
-                                "FUTBOL TIME ⚽️\nZinedine Zidane — fransiyalik afsonaviy futbolchi va murabbiy. U 1972 yil 23 iyunda tug‘ilgan. Zidane 1998 yilgi Jahon chempionatida Fransiyani chempionlikka yetaklagan. Klub darajasida Real Madrid va Juventus klublarida o‘ynagan. Murabbiy sifatida Real Madrid bilan uch marta ketma-ket Chempionlar Ligasida g‘olib chiqqan.",
-                                "FUTBOL TIME ⚽️\nKevin De Bruyne — belgiyalik professional futbolchi, Manchester City klubi va Belgiya terma jamoasi yarim himoyachisi. U 1991 yil 28 iyunda tug‘ilgan. De Bruyne yarim himoyadagi ajoyib texnikasi va to‘p uzatishlari bilan tanilgan. U bir necha bor Angliya Premyer Ligasining eng yaxshi futbolchilaridan biri deb tan olingan.",
-                                "FUTBOL TIME ⚽️\nRobert Lewandowski — polyak professional futbolchi, Barcelona klubi va Polsha terma jamoasi hujumchisi. U 1988 yil 21 avgustda tug‘ilgan. Bayern Munich tarkibida ko‘plab chempionliklarga erishgan va 2020 yilda FIFA tomonidan yilning eng yaxshi futbolchisi deb e’tirof etilgan.",
-                                "FUTBOL TIME ⚽️\nHarry Kane — ingliz professional futbolchi, Bayern Munich klubi va Angliya terma jamoasi hujumchisi. U 1993 yil 28 iyulda tug‘ilgan. Kane uzoq yillar Tottenham Hotspur klubida o‘ynagan va Angliya Premyer Ligasining eng yaxshi to‘purarlaridan biri bo‘lgan.",
-                                "FUTBOL TIME ⚽️\nModrich va Kroos — zamonaviy futbolning eng kuchli yarim himoyachilari. Luka Modrich Xorvatiya terma jamoasi sardori bo‘lib, 2018 yilgi Jahon chempionatida kumush medal olgan va Oltin to‘p sohibi bo‘lgan. Toni Kroos esa Germaniya bilan 2014 yilgi Jahon chempionatida g‘olib chiqqan.",
-                                "FUTBOL TIME ⚽️\nSalah va Mane — Afrikaning eng kuchli futbolchilaridan. Mohamed Salah Liverpool klubining hujumchisi bo‘lib, Chempionlar Ligasi va Premyer Liga g‘olibi. Sadio Mane esa Senegal terma jamoasi yetakchisi bo‘lib, 2022 yilda Afrika Millatlar Kubogida g‘alaba qozongan.",
-                                "FUTBOL TIME ⚽️\nVinicius Jr. va Rodrygo — Braziliyaning yosh va iqtidorli futbolchilari. Ikkalasi ham Real Madrid tarkibida Chempionlar Ligasida g‘olib bo‘lgan va kelajak yulduzlari sifatida ko‘rilmoqda.",
-                                "FUTBOL TIME ⚽️\nJude Bellingham — ingliz professional futbolchi, Real Madrid klubi va Angliya terma jamoasi yarim himoyachisi. U 2003 yil 29 iyunda tug‘ilgan. Borussia Dortmundda porlagan va 2023 yilda Real Madridga qo‘shilgan. Bellingham Yevropaning eng iqtidorli yosh futbolchilaridan biri hisoblanadi."
-                            ]
+                            if channel_id in channel_comments:
+                                comment_list = channel_comments[channel_id]
+                                comment = random.choice(comment_list)
+                            else:
+                                comment = "Ajoyib kanal ekan! 😊"
 
-                            comment = random.choice(comments)
                             await client.send_message(linked_chat_id, comment, reply_to=msg.id)
 
                             message = f"💬 Fikr bildirish bo‘limiga sharh yuborildi!: {comment}"
