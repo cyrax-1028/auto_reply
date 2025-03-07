@@ -32,11 +32,13 @@ channel_comments = {
         "Bu juda foydali post ekan! 👍",
         "Inline nomr 1",
         "...",
-        "Kanal a'lo darajada! 🔥"
+        "Kanal a'lo darajada! 🔥",
+        "Uzmobile effekt"
     ],
     -1002460046152: [  # Futbolishee
         "Bekorchisheee",
         "Futbolishee",
+        "Uzmobile effekt",
         "..."
     ],
     -1001980053407: [  # vamos
@@ -44,28 +46,33 @@ channel_comments = {
         "Juda zo'r kanal",
         "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
         "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
+        "Uzmobile effekt",
         "..."
     ],
     -1001773705589: [  # bilimdon
         "🔥",
         "Juda zo'r kanal",
         "Profilfagi kanalga o'tib olilar desam boloradimi",
+        "Uzmobile effekt",
         "..."
     ],
     -1001773705589: [  # efuzpage
         "Efuzpage nomr 1 🔥",
         "Eng zo'r kanal",
         "Soibjanov sila",
+        "Uzmobile effekt",
         "..."
     ],
     -1001449117896: [  # Stock
         "Shunchalik foydali postlar bor ekanki, doimo kuzatib boraman! 👌",
         "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
         "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
+        "Uzmobile effekt",
         "Stock Football nomr 1"
     ],
     -1002339069316: [  # Stock
         "Shunchalik foydali postlar bor ekanki, doimo kuzatib boraman! 👌",
+        "Uzmobile effekt",
         "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
         "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
         "Stock Football nomr 1"
