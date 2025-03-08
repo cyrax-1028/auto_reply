@@ -71,11 +71,9 @@ channel_comments = {
         "Stock Football nomr 1"
     ],
     -1002339069316: [  # Stock
-        "Shunchalik foydali postlar bor ekanki, doimo kuzatib boraman! 👌",
+        "Zo'r",
         "Ha",
         "Uzmobile effekt",
-        "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
-        "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
         "Stock Football nomr bir"
     ],
 
