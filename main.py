@@ -56,7 +56,7 @@ channel_comments = {
         "Uzmobile effekt",
         "..."
     ],
-    -1001773705589: [  # efuzpage
+    -1002331884910: [  # efuzpage
         "Efuzpage nomr 1 🔥",
         "Eng zo'r kanal",
         "Soibjanov sila",
