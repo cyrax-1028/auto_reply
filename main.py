@@ -30,7 +30,7 @@ channels = {
 channel_comments = {
     -1001337701474: [  # Inline
         "Bu juda foydali post ekan! 👍",
-        "Inline nomr 1",
+        "Inline nomr bir",
         "...",
         "Kanal a'lo darajada! 🔥",
         "Uzmobile effekt"
@@ -57,7 +57,7 @@ channel_comments = {
         "..."
     ],
     -1002331884910: [  # efuzpage
-        "Efuzpage nomr 1 🔥",
+        "Efuzpage nomr bir 🔥",
         "Eng zo'r kanal",
         "Soibjanov sila",
         "Uzmobile effekt",
@@ -72,10 +72,11 @@ channel_comments = {
     ],
     -1002339069316: [  # Stock
         "Shunchalik foydali postlar bor ekanki, doimo kuzatib boraman! 👌",
+        "Ha",
         "Uzmobile effekt",
         "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
         "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
-        "Stock Football nomr 1"
+        "Stock Football nomr bir"
     ],
 
 }
