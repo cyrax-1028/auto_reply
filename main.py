@@ -20,8 +20,8 @@ client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 channels = {
     -1001337701474: -1001956847541,  # Inline
     -1002460046152: -1001694845676,  # Futbolishee
-    -1001980053407: -1002030769789,  # vamos
-    -1001773705589: -1001981481442,  # Bilimdon
+    # -1001980053407: -1002030769789,  # vamos
+    # -1001773705589: -1001981481442,  # Bilimdon
     -1002339069316: -1002212791539,  # cyrax
     -1002331884910: -1002273035080,  # Efuzpage
     -1001449117896: -1002409602563  # Stock
@@ -29,33 +29,32 @@ channels = {
 
 channel_comments = {
     -1001337701474: [  # Inline
-        "Bu juda foydali post ekan! 👍",
         "Inline nomr bir",
         "...",
         "Kanal a'lo darajada! 🔥",
         "Uzmobile effekt"
     ],
     -1002460046152: [  # Futbolishee
-        "Bekorchisheee",
-        "Futbolishee",
+        "Ha",
+        "Zo'r",
         "Uzmobile effekt",
         "..."
     ],
-    -1001980053407: [  # vamos
-        "Vamos 🔥",
-        "Juda zo'r kanal",
-        "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
-        "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
-        "Uzmobile effekt",
-        "..."
-    ],
-    -1001773705589: [  # bilimdon
-        "🔥",
-        "Juda zo'r kanal",
-        "Profilfagi kanalga o'tib olilar desam boloradimi",
-        "Uzmobile effekt",
-        "..."
-    ],
+    # -1001980053407: [  # vamos
+    #     "Vamos 🔥",
+    #     "Juda zo'r kanal",
+    #     "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
+    #     "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
+    #     "Uzmobile effekt",
+    #     "..."
+    # ],
+    # -1001773705589: [  # bilimdon
+    #     "🔥",
+    #     "Juda zo'r kanal",
+    #     "Profilfagi kanalga o'tib olilar desam boloradimi",
+    #     "Uzmobile effekt",
+    #     "..."
+    # ],
     -1002331884910: [  # efuzpage
         "Efuzpage nomr bir 🔥",
         "Eng zo'r kanal",
@@ -64,19 +63,16 @@ channel_comments = {
         "..."
     ],
     -1001449117896: [  # Stock
-        "Shunchalik foydali postlar bor ekanki, doimo kuzatib boraman! 👌",
-        "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
-        "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
         "Uzmobile effekt",
-        "Stock Football nomr 1"
+        "Ha"
+        "Zo'r"
+        "..."
     ],
-    -1002339069316: [  # Stock
+    -1002339069316: [  # Cyrax
         "Zo'r",
         "Ha",
         "Uzmobile effekt",
-        "Stock Football nomr bir"
     ],
-
 }
 
 
