@@ -64,8 +64,8 @@ channel_comments = {
     ],
     -1001449117896: [  # Stock
         "Uzmobile effekt",
-        "Ha"
-        "Zo'r"
+        "Ha",
+        "Zo'r",
         "..."
     ],
     -1002339069316: [  # Cyrax
