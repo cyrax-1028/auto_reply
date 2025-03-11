@@ -24,21 +24,20 @@ channels = {
     # -1001773705589: -1001981481442,  # Bilimdon
     -1002339069316: -1002212791539,  # cyrax
     -1002331884910: -1002273035080,  # Efuzpage
-    -1001449117896: -1002409602563,  # Stock
     -1001974475685: -1002106652656  # efootball
 }
 
 channel_comments = {
     -1001337701474: [  # Inline
-        "Ha 🗿",
+        "Zo'r",
         "Ha",
-        "Mobiuz effekt"
+        "Uzmobile effekt"
     ],
     -1002460046152: [  # Futbolishee
-        "Ha 🗿",
-        "Zo'r 👍",
-        "Mobiuz effekt",
-        "Bekorchini sindiramiz rekasiya 🔥"
+        "Ha",
+        "Zo'r",
+        "...",
+        "Uzmobile effekt",
     ],
     # -1001980053407: [  # vamos
     #     "Vamos 🔥",
@@ -56,26 +55,25 @@ channel_comments = {
     #     "..."
     # ],
     -1002331884910: [  # efuzpage
-        "🔥",
+        "Zo'r",
         "Ha",
-        "Bekorchini sindiramiz rekasiya 🔥",
-        "Mobiuz effekt",
-        "😕",
-        "Eng zo'r efootball kanal 👍"
+        "Uzmobile effekt",
+        "Soibjanov sila",
+        "Efuzpage nomr 1",
+        "..."
     ],
     -1001974475685: [  # Efootball
-        "Mobiuz effekt",
-        "Ha 🗿",
-        "Zo'r 👍",
-        "Bekorchini sindiramiz rekasiya 🔥",
-        "🗿"
-    ],
-    -1001449117896: [  # Stok
+        "Uzmobile effekt",
         "Ha",
         "Zo'r",
-        ".",
-        "👍"
+        "..."
     ],
+    # -1001449117896: [  # Stok
+    #     "Ha",
+    #     "Zo'r",
+    #     ".",
+    #     "👍"
+    # ],
     -1002339069316: [  # Cyrax
         "Zo'r",
         "Ha",
