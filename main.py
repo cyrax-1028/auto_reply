@@ -24,7 +24,8 @@ channels = {
     # -1001773705589: -1001981481442,  # Bilimdon
     -1002339069316: -1002212791539,  # cyrax
     -1002331884910: -1002273035080,  # Efuzpage
-    -1001449117896: -1002409602563  # Stock
+    -1001449117896: -1002409602563,  # Stock
+    -1001974475685: -1002106652656  # efootball
 }
 
 channel_comments = {
@@ -62,7 +63,7 @@ channel_comments = {
         "Uzmobile effekt",
         "..."
     ],
-    -1001449117896: [  # Stock
+    -1001974475685: [  # Stock
         "Uzmobile effekt",
         "Ha",
         "Zo'r",
