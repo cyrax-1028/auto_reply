@@ -70,9 +70,7 @@ async def main():
     send_to_bot("✅ Userbot Railway'da ishga tushdi!")
 
 
-# Yangi foydalanuvchilarga avtomatik javob yuborish (shaxsiy chatlar uchun)
-from datetime import datetime, timedelta
-from telethon import events
+from datetime import datetime, timedelta, timezone
 
 @client.on(events.NewMessage(incoming=True))
 async def auto_reply(event):
@@ -82,11 +80,11 @@ async def auto_reply(event):
             chat_history = await client.get_messages(user.id, limit=1)
 
             if chat_history:
-                last_message_time = chat_history[0].date  # Oxirgi xabar vaqti
-                now = datetime.utcnow()  # Joriy vaqt (UTC)
+                last_message_time = chat_history[0].date.replace(tzinfo=timezone.utc)  # Oxirgi xabar UTC formatda
+                now = datetime.now(timezone.utc)  # Hozirgi vaqt (timezone-aware)
                 time_difference = now - last_message_time
 
-                # Agar oxirgi xabar 30 daqiqadan oldin yozilgan bo‘lsa, javob yuborish
+                # 30 daqiqa o'tgan bo'lsa, javob yuborish
                 if time_difference > timedelta(minutes=30):
                     welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbotman."
                     await event.reply(welcome_message)
