@@ -71,6 +71,9 @@ async def main():
 
 
 # Yangi foydalanuvchilarga avtomatik javob yuborish (shaxsiy chatlar uchun)
+from datetime import datetime, timedelta
+from telethon import events
+
 @client.on(events.NewMessage(incoming=True))
 async def auto_reply(event):
     try:
@@ -78,20 +81,33 @@ async def auto_reply(event):
             user = await event.get_sender()
             chat_history = await client.get_messages(user.id, limit=1)
 
-            # Yangi foydalanuvchiga javob yuborish
-            if not chat_history:
-                welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbot man"
+            if chat_history:
+                last_message_time = chat_history[0].date  # Oxirgi xabar vaqti
+                now = datetime.utcnow()  # Joriy vaqt (UTC)
+                time_difference = now - last_message_time
+
+                # Agar oxirgi xabar 30 daqiqadan oldin yozilgan bo‘lsa, javob yuborish
+                if time_difference > timedelta(minutes=30):
+                    welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbotman."
+                    await event.reply(welcome_message)
+                    message = f"💬 30 daqiqadan keyin foydalanuvchiga javob yuborildi: {welcome_message}"
+                    print(message)
+                    send_to_bot(message)
+                else:
+                    message = "🔒 30 daqiqadan kam vaqt o‘tgan - javob yuborilmaydi."
+                    print(message)
+                    send_to_bot(message)
+            else:
+                # Agar bu foydalanuvchining birinchi xabari bo‘lsa
+                welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbotman."
                 await event.reply(welcome_message)
                 message = f"💬 Yangi foydalanuvchiga javob yuborildi: {welcome_message}"
                 print(message)
                 send_to_bot(message)
-            else:
-                message = "🔒 Ilgari yozgan foydalanuvchi - javob yuborilmaydi."
-                print(message)
-                print(message)
-                send_to_bot(message)
+
     except Exception as e:
         print(f"⚠️ Xatolik: {e}")
+
 
 
 @client.on(events.NewMessage(chats=list(channels.keys())))
