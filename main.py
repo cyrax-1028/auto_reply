@@ -20,8 +20,6 @@ client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 channels = {
     -1001337701474: -1001956847541,  # Inline
     -1002460046152: -1001694845676,  # Futbolishee
-    # -1001980053407: -1002030769789,  # vamos
-    # -1001773705589: -1001981481442,  # Bilimdon
     -1002339069316: -1002212791539,  # cyrax
     -1002331884910: -1002273035080,  # Efuzpage
     -1001974475685: -1002106652656  # efootball
@@ -37,50 +35,25 @@ channel_comments = {
         "Ha",
         "Zo'r",
         "...",
-        "Uzmobile effekt",
     ],
-    # -1001980053407: [  # vamos
-    #     "Vamos 🔥",
-    #     "Juda zo'r kanal",
-    #     "Ma'lumotlar juda ham qiziqarli ekan! Rahmat!",
-    #     "Bunday sifatli kontent topish qiyin, zo‘r kanal! 🔥",
-    #     "Uzmobile effekt",
-    #     "..."
-    # ],
-    # -1001773705589: [  # bilimdon
-    #     "🔥",
-    #     "Juda zo'r kanal",
-    #     "Profilfagi kanalga o'tib olilar desam boloradimi",
-    #     "Uzmobile effekt",
-    #     "..."
-    # ],
     -1002331884910: [  # efuzpage
         "Zo'r",
         "Ha",
         "Uzmobile effekt",
         "Soibjanov sila",
-        "Efuzpage nomr 1",
         "..."
     ],
     -1001974475685: [  # Efootball
-        "Uzmobile effekt",
         "Ha",
         "Zo'r",
         "..."
     ],
-    # -1001449117896: [  # Stok
-    #     "Ha",
-    #     "Zo'r",
-    #     ".",
-    #     "👍"
-    # ],
     -1002339069316: [  # Cyrax
         "Zo'r",
         "Ha",
         "Uzmobile effekt",
     ],
 }
-
 
 def send_to_bot(message):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
@@ -95,6 +68,30 @@ async def main():
     await client.start()
     print("✅ Userbot Railway'da ishga tushdi!")
     send_to_bot("✅ Userbot Railway'da ishga tushdi!")
+
+
+# Yangi foydalanuvchilarga avtomatik javob yuborish (shaxsiy chatlar uchun)
+@client.on(events.NewMessage(incoming=True))
+async def auto_reply(event):
+    try:
+        if event.is_private:
+            user = await event.get_sender()
+            chat_history = await client.get_messages(user.id, limit=1)
+
+            # Yangi foydalanuvchiga javob yuborish
+            if not chat_history:
+                welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbot man"
+                await event.reply(welcome_message)
+                message = f"💬 Yangi foydalanuvchiga javob yuborildi: {welcome_message}"
+                print(message)
+                send_to_bot(message)
+            else:
+                message = "🔒 Ilgari yozgan foydalanuvchi - javob yuborilmaydi."
+                print(message)
+                print(message)
+                send_to_bot(message)
+    except Exception as e:
+        print(f"⚠️ Xatolik: {e}")
 
 
 @client.on(events.NewMessage(chats=list(channels.keys())))
