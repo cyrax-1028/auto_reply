@@ -32,21 +32,23 @@ channel_comments = {
         "Uzmobile effekt"
     ],
     -1002460046152: [  # Futbolishee
-        "Ha",
-        "Zo'r",
+        "Ha 🗿",
+        "Zo'r 🗿",
         "...",
+        "🗿"
     ],
     -1002331884910: [  # efuzpage
-        "Zo'r",
-        "Ha",
-        "Uzmobile effekt",
-        "Soibjanov sila",
-        "..."
+        "Zo'r 🗿",
+        "Ha 🗿",
+        "Soibjanov sila 🗿",
+        "...",
+        "🗿",
     ],
     -1001974475685: [  # Efootball
-        "Ha",
-        "Zo'r",
-        "..."
+        "Ha 🗿",
+        "Zo'r 🗿",
+        "...",
+        "🗿"
     ],
     -1002339069316: [  # Cyrax
         "Zo'r",
