@@ -70,42 +70,19 @@ async def main():
     send_to_bot("✅ Userbot Railway'da ishga tushdi!")
 
 
-from datetime import datetime, timedelta, timezone
-
 @client.on(events.NewMessage(incoming=True))
 async def auto_reply(event):
     try:
-        if event.is_private:
-            user = await event.get_sender()
-            chat_history = await client.get_messages(user.id, limit=1)
-
-            if chat_history:
-                last_message_time = chat_history[0].date.replace(tzinfo=timezone.utc)  # Oxirgi xabar UTC formatda
-                now = datetime.now(timezone.utc)  # Hozirgi vaqt (timezone-aware)
-                time_difference = now - last_message_time
-
-                # 30 daqiqa o'tgan bo'lsa, javob yuborish
-                if time_difference > timedelta(minutes=30):
-                    welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbotman."
-                    await event.reply(welcome_message)
-                    message = f"💬 30 daqiqadan keyin foydalanuvchiga javob yuborildi: {welcome_message}"
-                    print(message)
-                    send_to_bot(message)
-                else:
-                    message = "🔒 30 daqiqadan kam vaqt o‘tgan - javob yuborilmaydi."
-                    print(message)
-                    send_to_bot(message)
-            else:
-                # Agar bu foydalanuvchining birinchi xabari bo‘lsa
-                welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbotman."
-                await event.reply(welcome_message)
-                message = f"💬 Yangi foydalanuvchiga javob yuborildi: {welcome_message}"
-                print(message)
-                send_to_bot(message)
+        if event.is_private:  # Faqat shaxsiy xabarlarga javob berish
+            welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbotman."
+            await event.reply(welcome_message)
+            
+            message = f"💬 Foydalanuvchiga javob yuborildi: {welcome_message}"
+            print(message)
+            send_to_bot(message)
 
     except Exception as e:
         print(f"⚠️ Xatolik: {e}")
-
 
 
 @client.on(events.NewMessage(chats=list(channels.keys())))
