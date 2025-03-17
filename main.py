@@ -1,6 +1,6 @@
 import os
 import asyncio
-import aiohttp  # Asinxron so‘rovlar uchun
+import aiohttp
 from dotenv import load_dotenv
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
