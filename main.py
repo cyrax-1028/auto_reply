@@ -85,12 +85,17 @@ async def handler(event):
 @client.on(events.NewMessage(chats=list(channels.values()), incoming=True))
 async def auto_reply(event):
     try:
-        bot_id = (await client.get_me()).id
+        self_id = (await client.get_me()).id  # Userbot ID
 
-        if event.is_reply and event.reply_to and event.reply_to.from_id == bot_id:
-            reply_message = random.choice(auto_replies)
-            await event.reply(reply_message)
-            await send_to_bot(f"🔄 Auto-reply yuborildi: {reply_message}")
+        # Agar xabar kimningdir javobi bo‘lsa
+        if event.is_reply and event.reply_to_msg_id:
+            original_message = await event.get_reply_message()
+
+            # Agar javob userbot yozgan xabarga bo'lsa
+            if original_message and original_message.sender_id == self_id:
+                reply_message = random.choice(auto_replies)
+                await event.reply(reply_message)
+                print(f"🔄 Auto-reply yuborildi: {reply_message}")
 
     except Exception as e:
         print(f"⚠️ Xatolik (auto-reply): {e}")
