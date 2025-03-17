@@ -1,6 +1,6 @@
 import os
 import asyncio
-import requests
+import aiohttp  # Asinxron so‘rovlar uchun
 from dotenv import load_dotenv
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
@@ -32,24 +32,22 @@ channel_comments = {
     -1002339069316: ["Zo'r", "Ha", "Uzmobile effekt"]
 }
 
-auto_replies = [
-    "Ha 😊",
-]
+auto_replies = ["Ha 😊"]
 
 
-def send_to_bot(message):
+async def send_to_bot(message):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     data = {"chat_id": CHAT_ID, "text": message}
-    try:
-        requests.post(url, data=data)
-    except Exception as e:
-        print(f"⚠️ Xatolik botga xabar yuborishda: {e}")
+    async with aiohttp.ClientSession() as session:
+        async with session.post(url, data=data) as resp:
+            if resp.status != 200:
+                print(f"⚠️ Botga xabar yuborishda xatolik: {resp.status}")
 
 
 async def main():
     await client.start()
     print("✅ Userbot Railway'da ishga tushdi!")
-    send_to_bot("✅ Userbot Railway'da ishga tushdi!")
+    await send_to_bot("✅ Userbot Railway'da ishga tushdi!")
 
 
 @client.on(events.NewMessage(chats=list(channels.keys())))
@@ -64,57 +62,36 @@ async def handler(event):
 
             message = f"✅ Yangi post topildi! Kanal: {channel_name} (ID: {channel_id}), Post ID: {event.id}"
             print(message)
-            send_to_bot(message)
+            await send_to_bot(message)
 
-            start_time = asyncio.get_event_loop().time()
-            found = False
+            messages = await client.get_messages(linked_chat_id, limit=10)
 
-            while asyncio.get_event_loop().time() - start_time < 5:
-                async for msg in client.iter_messages(linked_chat_id, limit=10):
-                    if msg.forward and msg.forward.original_fwd:
-                        if msg.forward.original_fwd.channel_post == event.id:
-                            message = f"🔗 Ulangan post topildi! Guruhdagi ID: {msg.id}"
-                            print(message)
-                            send_to_bot(message)
+            for msg in messages:
+                if msg.forward and msg.forward.original_fwd and msg.forward.original_fwd.channel_post == event.id:
+                    comment = random.choice(channel_comments.get(channel_id, ["Ajoyib kanal ekan! 😊"]))
 
-                            if channel_id in channel_comments:
-                                comment_list = channel_comments[channel_id]
-                                comment = random.choice(comment_list)
-                            else:
-                                comment = "Ajoyib kanal ekan! 😊"
+                    await asyncio.gather(
+                        client.send_message(linked_chat_id, comment, reply_to=msg.id),
+                        send_to_bot(f"💬 Sharh yuborildi!: {comment}")
+                    )
+                    return
 
-                            await client.send_message(linked_chat_id, comment, reply_to=msg.id)
-
-                            message = f"💬 Fikr bildirish bo‘limiga sharh yuborildi!: {comment}"
-                            print(message)
-                            send_to_bot(message)
-
-                            found = True
-                            break
-
-                if found:
-                    break
-
-                await asyncio.sleep(0.3)
-
-            if not found:
-                message = "⛔ Guruhda mos post topilmadi!"
-                print(message)
-                send_to_bot(message)
+            await send_to_bot("⛔ Guruhda mos post topilmadi!")
 
     except Exception as e:
-        message = f"⚠️ Xatolik: {e}"
-        print(message)
-        send_to_bot(message)
+        await send_to_bot(f"⚠️ Xatolik: {e}")
 
 
 @client.on(events.NewMessage(chats=list(channels.values()), incoming=True))
 async def auto_reply(event):
     try:
-        if event.is_reply and event.reply_to and event.reply_to.from_id == (await client.get_me()).id:
+        bot_id = (await client.get_me()).id
+
+        if event.is_reply and event.reply_to and event.reply_to.from_id == bot_id:
             reply_message = random.choice(auto_replies)
             await event.reply(reply_message)
-            print(f"🔄 Auto-reply yuborildi: {reply_message}")
+            await send_to_bot(f"🔄 Auto-reply yuborildi: {reply_message}")
+
     except Exception as e:
         print(f"⚠️ Xatolik (auto-reply): {e}")
 
@@ -125,10 +102,7 @@ async def private_reply(event):
         if event.is_private:
             welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbotman."
             await event.reply(welcome_message)
-
-            message = f"💬 Foydalanuvchiga javob yuborildi: {welcome_message}"
-            print(message)
-            send_to_bot(message)
+            await send_to_bot(f"💬 Foydalanuvchiga javob yuborildi: {welcome_message}")
 
     except Exception as e:
         print(f"⚠️ Xatolik (private-reply): {e}")
