@@ -121,6 +121,14 @@ async def auto_reply(event):
                     reply_message = "Men avtomatlashtirilgan userbotman! 🤖"
                 elif "gay" in user_reply_text:
                     reply_message = "Yo'q. Men avtomatlashtirilgan userbotman! 🤖"
+                elif "kot" in user_reply_text:
+                    reply_message = "Yoq o'zizsiz. Men avtomatlashtirilgan userbotman! 🤖"
+                elif "kut" in user_reply_text:
+                    reply_message = "Yoq o'zizsiz. Men avtomatlashtirilgan userbotman! 🤖"
+                elif "ko't" in user_reply_text:
+                    reply_message = "Yoq o'zizsiz. Men avtomatlashtirilgan userbotman! 🤖"
+                elif "kut" in user_reply_text:
+                    reply_message = "Yoq o'zizsiz. Men avtomatlashtirilgan userbotman! 🤖"
                 else:
                     reply_message = random.choice(auto_replies)
 
@@ -129,7 +137,6 @@ async def auto_reply(event):
 
     except Exception as e:
         print(f"⚠️ Xatolik (auto-reply): {e}")
-
 
 
 @client.on(events.NewMessage(incoming=True))
