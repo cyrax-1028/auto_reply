@@ -32,7 +32,7 @@ channel_comments = {
     -1002339069316: ["Zo'r", "Ha", "Uzmobile effekt"]
 }
 
-auto_replies = ["Ha 😊"]
+auto_replies = ["Haa"]
 
 
 async def send_to_bot(message):
