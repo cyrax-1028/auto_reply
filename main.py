@@ -134,6 +134,7 @@ async def auto_reply(event):
 
                 await event.reply(reply_message)
                 print(f"🔄 Auto-reply yuborildi: {reply_message}")
+                await send_to_bot(f"🔄 Auto-reply yuborildi: {reply_message}")
 
     except Exception as e:
         print(f"⚠️ Xatolik (auto-reply): {e}")
