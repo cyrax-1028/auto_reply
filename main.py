@@ -119,6 +119,8 @@ async def auto_reply(event):
                     reply_message = "Men avtomatlashtirilgan userbotman! 🤖"
                 elif "bot" in user_reply_text:
                     reply_message = "Men avtomatlashtirilgan userbotman! 🤖"
+                elif "gay" in user_reply_text:
+                    reply_message = "Yo'q. Men avtomatlashtirilgan userbotman! 🤖"
                 else:
                     reply_message = random.choice(auto_replies)
 
