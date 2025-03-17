@@ -4,7 +4,6 @@ import requests
 from dotenv import load_dotenv
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
-import json
 import random
 
 load_dotenv()
@@ -26,36 +25,17 @@ channels = {
 }
 
 channel_comments = {
-    -1001337701474: [  # Inline
-        "Zo'r",
-        "Ha",
-        "Uzmobile effekt"
-    ],
-    -1002460046152: [  # Futbolishee
-        "Ha 🗿",
-        "Zo'r 🗿",
-        "...",
-        "🗿"
-    ],
-    -1002331884910: [  # efuzpage
-        "Zo'r 🗿",
-        "Ha 🗿",
-        "Soibjanov sila 🗿",
-        "...",
-        "🗿",
-    ],
-    -1001974475685: [  # Efootball
-        "Ha 🗿",
-        "Zo'r 🗿",
-        "...",
-        "🗿"
-    ],
-    -1002339069316: [  # Cyrax
-        "Zo'r",
-        "Ha",
-        "Uzmobile effekt",
-    ],
+    -1001337701474: ["Zo'r", "Ha", "Uzmobile effekt"],
+    -1002460046152: ["Ha", "Zo'r", "...", "Uzmobile effekt"],
+    -1002331884910: ["Zo'r", "Ha", "Uzmobile effekt", "Efuzpage nomr 1"],
+    -1001974475685: ["Uzmobile effekt", "Ha", "Zo'r"],
+    -1002339069316: ["Zo'r", "Ha", "Uzmobile effekt"]
 }
+
+auto_replies = [
+    "Ha 😊",
+]
+
 
 def send_to_bot(message):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
@@ -70,21 +50,6 @@ async def main():
     await client.start()
     print("✅ Userbot Railway'da ishga tushdi!")
     send_to_bot("✅ Userbot Railway'da ishga tushdi!")
-
-
-@client.on(events.NewMessage(incoming=True))
-async def auto_reply(event):
-    try:
-        if event.is_private:  # Faqat shaxsiy xabarlarga javob berish
-            welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbotman."
-            await event.reply(welcome_message)
-            
-            message = f"💬 Foydalanuvchiga javob yuborildi: {welcome_message}"
-            print(message)
-            send_to_bot(message)
-
-    except Exception as e:
-        print(f"⚠️ Xatolik: {e}")
 
 
 @client.on(events.NewMessage(chats=list(channels.keys())))
@@ -141,6 +106,32 @@ async def handler(event):
         message = f"⚠️ Xatolik: {e}"
         print(message)
         send_to_bot(message)
+
+
+@client.on(events.NewMessage(chats=list(channels.values()), incoming=True))
+async def auto_reply(event):
+    try:
+        if event.is_reply and event.reply_to and event.reply_to.from_id == (await client.get_me()).id:
+            reply_message = random.choice(auto_replies)
+            await event.reply(reply_message)
+            print(f"🔄 Auto-reply yuborildi: {reply_message}")
+    except Exception as e:
+        print(f"⚠️ Xatolik (auto-reply): {e}")
+
+
+@client.on(events.NewMessage(incoming=True))
+async def private_reply(event):
+    try:
+        if event.is_private:
+            welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbotman."
+            await event.reply(welcome_message)
+
+            message = f"💬 Foydalanuvchiga javob yuborildi: {welcome_message}"
+            print(message)
+            send_to_bot(message)
+
+    except Exception as e:
+        print(f"⚠️ Xatolik (private-reply): {e}")
 
 
 with client:
