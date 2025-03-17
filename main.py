@@ -100,6 +100,35 @@ async def handler(event):
 #     except Exception as e:
 #         print(f"⚠️ Xatolik (auto-reply): {e}")
 
+@client.on(events.NewMessage(chats=list(channels.values()), incoming=True))
+async def auto_reply(event):
+    try:
+        self_id = (await client.get_me()).id  # Userbot ID
+
+        if event.is_reply and event.reply_to_msg_id:
+            original_message = await event.get_reply_message()
+
+            if original_message and original_message.sender_id == self_id:
+                user_reply_text = event.text.lower()
+
+                if "salom" in user_reply_text:
+                    reply_message = "Salom!"
+                elif "qanday" in user_reply_text:
+                    reply_message = "Yaxshi!"
+                elif "kim" in user_reply_text:
+                    reply_message = "Men avtomatlashtirilgan userbotman! 🤖"
+                elif "bot" in user_reply_text:
+                    reply_message = "Men avtomatlashtirilgan userbotman! 🤖"
+                else:
+                    reply_message = random.choice(auto_replies)
+
+                await event.reply(reply_message)
+                print(f"🔄 Auto-reply yuborildi: {reply_message}")
+
+    except Exception as e:
+        print(f"⚠️ Xatolik (auto-reply): {e}")
+
+
 
 @client.on(events.NewMessage(incoming=True))
 async def private_reply(event):
