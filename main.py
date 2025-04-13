@@ -17,11 +17,16 @@ CHAT_ID = os.getenv("CHAT_ID")
 client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 
 channels = {
-    -1001337701474: ["Zo'r", "Ha", "Uzmobile effekt"],  # Inline
-    -1002460046152: ["Ha", "Zo'r", "...", "Uzmobile effekt"],  # Futbolishee
-    -1002421347022: ["Zo'r", "Ha", "Uzmobile effekt"],  # bekorchi
-    -1002331884910: ["Zo'r", "Ha", "Uzmobile effekt", "Efuzpage nomr 1"],  # efuzpage
-    -1001974475685: ["Uzmobile effekt", "Ha", "Zo'r"]  # efootball
+    # -1001337701474: ["Zo'r", "Ha", "Мхм\n\nРаетса\nХихихи\nРаетса\nРаетса\nЧо\nхадоди\n\n😂"],  # Inline
+    # -1002460046152: ["Ha", "Zo'r", "...", "suv kabi bo'l", "Мхм\n\nРаетса\nХихихи\nРаетса\nРаетса\nЧо\nхадоди\n\n😂"],
+    # Futbolishee
+    -1002421347022: ["Zo'r", "Ha"],  # bekorchi
+    # -1002331884910: ["Zo'r", "Ha", "Uzmobile effekt", "Efuzpage nomr 1",
+    #                  "Мхм\n\nРаетса\nХихихи\nРаетса\nРаетса\nЧо\nхадоди\n\n😂"],  # efuzpage
+    # -1001974475685: ["Uzmobile effekt", "Ha", "Zo'r", "Мхм\n\nРаетса\nХихихи\nРаетса\nРаетса\nЧо\nхадоди\n\n😂"],
+    # efootball
+    # -1001449117896: ["ha", "Мхм\n\nРаетса\nХихихи\nРаетса\nРаетса\nЧо\nхадоди\n\n😂"],  # Stock
+    -1001666463882: ["ha", "eng zo'r kanal"]  # private cr7
 }
 
 
@@ -48,15 +53,18 @@ async def handler(event):
             message=comment,
             comment_to=event.id
         )
+        clean_channel_id = str(channel_id).replace("-100", "")
 
-        log_message = f"✅ Yangi post topildi! Kanal: {channel_name} (ID: {channel_id}), Post ID: {event.id}\n💬 Sharh yozildi: {comment}"
+        channel_link = f"https://t.me/c/{clean_channel_id}"
+
+        log_message = f"✅ Yangi post topildi!\nKanal: {channel_name}: {channel_link}\nID: {channel_id},\nPost ID: {event.id}\n💬 Sharh yozildi: {comment}"
         print(log_message)
-        await send_to_bot(log_message)
+        await send_to_bot(f"Bekorchi: {log_message}")
 
     except Exception as e:
         error_message = f"⚠️ Xatolik: {e}"
         print(error_message)
-        await send_to_bot(error_message)
+        await send_to_bot(f"Bekorchi: {error_message}")
 
 
 @client.on(events.NewMessage(incoming=True))
@@ -68,17 +76,17 @@ async def auto_reply(event):
 
             log_message = f"💬 Foydalanuvchiga javob yuborildi: {welcome_message}"
             print(log_message)
-            await send_to_bot(log_message)
+            await send_to_bot(f"Bekorchi: {log_message}")
 
     except Exception as e:
         error_message = f"⚠️ Xatolik (private-reply): {e}"
         print(error_message)
-        await send_to_bot(error_message)
+        await send_to_bot(f"Bekorchi: {error_message}")
 
 
 async def main():
     await client.start()
-    start_message = "✅ Userbot Railway'da ishga tushdi!"
+    start_message = "✅ Userbot ishga tushdi!"
     print(start_message)
     await send_to_bot(start_message)
 
