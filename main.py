@@ -17,12 +17,12 @@ CHAT_ID = os.getenv("CHAT_ID")
 client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 
 channels = {
-    -1001337701474: ["Zo'r", "Ha", "Мхм\n\nРаетса\nХихихи\nРаетса\nРаетса\nЧо\nхадоди\n\n😂"],  # Inline
-    -1002460046152: ["Ha", "Zo'r", "...", "suv kabi bo'l", "Мхм\n\nРаетса\nХихихи\nРаетса\nРаетса\nЧо\nхадоди\n\n😂"], # Futbolishee
+    -1001337701474: ["Zo'r", "Ha", "Rus tilida bir gap bordee\nNi kto nijvijim 🫡🧒🏿"],  # Inline
+    -1002460046152: ["Ha", "Zo'r", "...", "suv kabi bo'l", "Rus tilida bir gap bordee\nNi kto nijvijim 🫡🧒🏿"], # Futbolishee
     -1002421347022: ["Zo'r", "Ha"],  # bekorchi
-    -1002331884910: ["Zo'r", "Ha", "Uzmobile effekt", "Efuzpage nomr 1", "Мхм\n\nРаетса\nХихихи\nРаетса\nРаетса\nЧо\nхадоди\n\n😂"],  # efuzpage
-    -1001974475685: ["Uzmobile effekt", "Ha", "Zo'r", "Мхм\n\nРаетса\nХихихи\nРаетса\nРаетса\nЧо\nхадоди\n\n😂"], # efootball
-    -1001449117896: ["ha", "Мхм\n\nРаетса\nХихихи\nРаетса\nРаетса\nЧо\nхадоди\n\n😂"],  # Stock
+    -1002331884910: ["Zo'r", "Ha", "Uzmobile effekt", "Efuzpage nomr 1", "Rus tilida bir gap bordee\nNi kto nijvijim 🫡🧒🏿"],  # efuzpage
+    -1001974475685: ["Uzmobile effekt", "Ha", "Zo'r", "Rus tilida bir gap bordee\nNi kto nijvijim 🫡🧒🏿"], # efootball
+    -1001449117896: ["ha", "Rus tilida bir gap bordee\nNi kto nijvijim 🫡🧒🏿"],  # Stock
     -1001666463882: ["ha", "eng zo'r kanal"]  # private cr7
 }
 
