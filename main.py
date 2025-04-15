@@ -64,21 +64,21 @@ async def handler(event):
         await send_to_bot(f"Bekorchi: {error_message}")
 
 
-@client.on(events.NewMessage(incoming=True))
-async def auto_reply(event):
-    try:
-        if event.is_private:
-            welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbotman."
-            await event.reply(welcome_message)
-
-            log_message = f"💬 Foydalanuvchiga javob yuborildi: {welcome_message}"
-            print(log_message)
-            await send_to_bot(f"Bekorchi: {log_message}")
-
-    except Exception as e:
-        error_message = f"⚠️ Xatolik (private-reply): {e}"
-        print(error_message)
-        await send_to_bot(f"Bekorchi: {error_message}")
+# @client.on(events.NewMessage(incoming=True))
+# async def auto_reply(event):
+#     try:
+#         if event.is_private:
+#             welcome_message = "Assalomu alaykum! Men dasturchilar tomonidan avtomatlashtirilgan userbotman."
+#             await event.reply(welcome_message)
+#
+#             log_message = f"💬 Foydalanuvchiga javob yuborildi: {welcome_message}"
+#             print(log_message)
+#             await send_to_bot(f"Bekorchi: {log_message}")
+#
+#     except Exception as e:
+#         error_message = f"⚠️ Xatolik (private-reply): {e}"
+#         print(error_message)
+#         await send_to_bot(f"Bekorchi: {error_message}")
 
 
 async def main():
