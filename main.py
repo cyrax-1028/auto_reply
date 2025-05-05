@@ -50,11 +50,8 @@ async def handler(event):
             message=comment,
             comment_to=event.id
         )
-        clean_channel_id = str(channel_id).replace("-100", "")
 
-        channel_link = f"https://t.me/c/{clean_channel_id}"
-
-        log_message = f"✅ Yangi post topildi!\nKanal: {channel_name}: {channel_link}\nID: {channel_id},\nPost ID: {event.id}\n💬 Sharh yozildi: {comment}"
+        log_message = f"✅ Yangi post topildi!\nKanal: {channel_name}\nID: {channel_id}\nPost ID: {event.id}\n💬 Sharh yozildi: {comment}"
         print(log_message)
         await send_to_bot(f"Bekorchi: {log_message}")
 
