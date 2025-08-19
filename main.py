@@ -23,9 +23,10 @@ channels = {
     -1001337701474: ["Zo'r", "Ha", "🧒🏿", "Siuu"], #inline
     -1002460046152: ["Ha", "Zo'r", "Keldim", "🧒🏿", "Siuu"], #futbolishee
     -1002421347022: ["Zo'r", "Ha"], #bekorchi
-    -1002331884910: ["Zo'r", "Ha", "Efuzpage nomr 1", "🧒🏿", "Siuu"], #efuzpage
-    -1002423336133: ["Zo'r", "Ha", "Efuzpage nomr 1", "🧒🏿", "Siuu"], #efootball next
-    -1001974475685: ["Ha", "Zo'r", "🧒🏿", "Siuu"], #efootball
+    -1002331884910: ["Zo'r", "Ha", "Efuzmobile nomr 1", "🧒🏿", "Siuu"], #efuzmobile
+    -1002423336133: ["Zo'r", "Ha", "Efootball next nomr 1", "🧒🏿", "Siuu"], #efootball next
+    -1002739674759: ["Zo'r", "Ha", "Zico nomr 1", "🧒🏿", "Siuu"], #Zico
+    -1001974475685: ["Ha", "Zo'r", "🧒🏿", "Siuu"], #efootball page
     -1001449117896: ["ha", "🧒🏿", "Siuu"], #stock
     -1001666463882: ["ha", "eng zo'r kanal", "Siuu"], #private cr7
     -1001171062015: ["ha", "🧒🏿", "Siuu"] #aslam
